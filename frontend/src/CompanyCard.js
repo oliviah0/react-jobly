@@ -10,7 +10,7 @@ class CompanyCard extends Component {
     let companyPage = `/companies/${company.handle}`;
     return (
       <div>
-        <div className="card my-2">
+        <div className="companyCard my-2">
           <Link to={companyPage}>
             <div className="card-body">
               <h5 className="card-title">{company.name}</h5>

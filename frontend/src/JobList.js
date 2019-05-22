@@ -4,17 +4,10 @@ import uuid from "uuid/v4";
 import JobCard from "./JobCard";
 
 class JobList extends Component {
-  // static defaultProps = {}
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-  // }
-
   render() {
-    let {jobs} = this.props;
+    let { jobs } = this.props;
     let output = (
-      jobs.map(job => <JobCard job={job}/>)
+      jobs.map(job => <JobCard key={job.id} job={job} />)
     );
     return (
       <div>

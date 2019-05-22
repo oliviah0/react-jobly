@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
-//import uuid from "uuid/v4";
 import "./Companies.css";
 import JoblyApi from "./JoblyApi";
 import CompanyList from "./CompanyList";
@@ -33,7 +31,7 @@ class Companies extends Component {
     let {companies} = this.state;
     return (
       <div>
-        <div className="wrap">
+        <div className="companiesWrap">
         <SearchForm handleSearch = {this.getFilteredCompanies}/>
         <CompanyList companies={companies}/>
         </div>

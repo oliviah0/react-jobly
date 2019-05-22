@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import uuid from "uuid/v4";
+import "./Jobs.css";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList"
 import SearchForm from "./SearchForm"
@@ -30,8 +29,10 @@ class Jobs extends Component {
     let {jobs} = this.state;
     return (
       <div>
+        <div className="jobsWrap">
        <SearchForm handleSearch = {this.getFilteredJobs}/>  
        <JobList jobs={jobs}/>
+       </div>
       </div>
     );
   }

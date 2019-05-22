@@ -14,7 +14,7 @@ class CompanyList extends Component {
   render() {
     let {companies} = this.props;
     let output = (
-      companies.map(company => <CompanyCard company={company}/>)
+         companies.map(company => <CompanyCard key={company.handle} company={company}/>)
     );
     return (
       <div>
