@@ -18,15 +18,15 @@ class Routes extends Component {
   render() {
     return (
 
-        <Switch>
-          <Route exact path="/login" render={() => <Login/>} />
-          <Route exact path="/companies/:handle" render={() => <Company/>} />
-          <Route exact path="/companies" render={() => <Companies/>} />
-          <Route exact path="/jobs" render={() => <Jobs/>} />
-          <Route exact path="/profile" render={() => <Profile/>} />
-          <Route exact path="/" render={() => <Home/>} />
-          <Redirect to="/" />
-        </Switch>
+      <Switch>
+        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/companies/:handle" render={() => <Company />} />
+        <Route exact path="/companies" render={() => <Companies />} />
+        <Route exact path="/jobs" render={() => <Jobs />} />
+        <Route exact path="/profile" render={() => <Profile />} />
+        <Route exact path="/" render={() => <Home />} />
+        <Redirect to="/" />
+      </Switch>
 
     );
   }

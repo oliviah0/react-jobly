@@ -4,9 +4,10 @@ import React, { Component } from "react";
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   ###: "",
-    // };
+    this.state = {
+      searchItem: "",
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,18 +18,15 @@ class SearchForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.add###({ this.state });
-    // this.props.history.push("/somewhere");
+    this.props.handleSearch(this.state.searchItem);
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input name="search" id="search" onChange={this.handleChange} value={this.state} />
-          </div>
-          <button type="Submit">Search</button>
+        <form className="form-inline" onSubmit={this.handleSubmit}>
+            <input className="form-control form-control-lg flex-grow-1" type="search" placeholder="Search" name="searchItem" id="search" onChange={this.handleChange} value={this.state.searchItem} />
+            <button className="btn btn-outline-success btn-lg" type="submit">Search</button>
         </form>
       </div>
     );
