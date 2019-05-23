@@ -1,39 +1,41 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
 import Nav from "./Nav";
 import JoblyApi from "./JoblyApi";
 import { decode } from "jsonwebtoken";
+import CurrentUserContext from "./CurrentUserContext";
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      currentUser: null
+      currentUser: null,
+      infoLoaded: false
     };
 
     this.getCurrentUser = this.getCurrentUser.bind(this);
-    
+
   }
 
-  componentDidMount(){
-    this.getCurrentUser();
+  async componentDidMount() {
+    await this.getCurrentUser();
   }
 
   async getCurrentUser() {
     let token = localStorage.getItem("token");
     try {
       //get username from token
-      let {username} = decode(token);
+      let { username } = decode(token);
 
       //grab the record of the user from the server and set state
       let currentUser = await JoblyApi.getUser(username);
-      this.setState({ currentUser });
+      this.setState({ currentUser, infoLoaded: true });
     }
-    catch(e) {
-      console.error(e);
+    catch (e) {
+      this.setState({ infoLoaded: true });
     }
   }
 
@@ -44,11 +46,19 @@ class App extends Component {
 
 
   render() {
+    if (!this.state.infoLoaded) {
+      return (
+        <div>LOADING</div>
+      );
+    }
     return (
       <div className="App">
-       
+        {/* <CurrentUserContext.Provider value={this.state.currentUser}>
+          <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
+          <Routes currentUser={this.state.currentUser} />
+        </CurrentUserContext.Provider> */}
         <BrowserRouter>
-          <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout}/> 
+          <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
           <Routes currentUser={this.state.currentUser} />
         </BrowserRouter>
       </div>
