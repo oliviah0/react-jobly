@@ -9,7 +9,6 @@ class Nav extends Component {
         <Link to="/companies" className="nav-item nav-link">Companies</Link>
         <Link to="/jobs" className="nav-item nav-link" >Jobs</Link>
         <Link to="/profile" className="nav-item nav-link">Profile</Link>
-        <Link to="login" className="nav-item nav-link">Login</Link>
         <Link to="/" className="nav-item nav-link" onClick={this.props.handleLogout}>Logout</Link>
       </div>
     );

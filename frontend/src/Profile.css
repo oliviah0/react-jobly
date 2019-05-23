@@ -1,0 +1,16 @@
+.profile-style {
+   width:500px;
+   margin:0 auto;
+   border: 1px solid #a0a0a0;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-style > h2 {
+  text-align: center;
+}
+
+.form-group > label {
+  font-size: 17px;
+  color: black;
+  text-decoration: underline;
+}

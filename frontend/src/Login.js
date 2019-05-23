@@ -67,7 +67,7 @@ class Login extends Component {
     return (
       <div>
         <div className="Login">
-          <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+          <div className="container buttons-style col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <div className="d-flex justify-content-end">
               <div className="btn-group">
                 <button

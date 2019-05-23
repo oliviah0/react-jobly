@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./Home.css";
 
 class Home extends Component {
 
   render() {
     let home = (
       <div>
-        <p>WELCOME HOME</p>
+        <p style={{fontSize:"43px"}}>WELCOME HOME</p>
         <Link to="/login"><button className="btn btn-primary">Login</button></Link>
       </div>
     );
@@ -16,7 +17,7 @@ class Home extends Component {
     }
 
     return (
-      <div>
+      <div className="home-style">
         {home}
       </div>
     );

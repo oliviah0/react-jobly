@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
-// import "./Profile.css";
+import "./Profile.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="card-body profile-style">
         <h2>PROFILE</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">

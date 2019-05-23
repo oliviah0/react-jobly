@@ -27,6 +27,7 @@ class SignUpForm extends Component {
 
   render() {
     return (
+      <div className="card-body login-style">
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
@@ -94,6 +95,7 @@ class SignUpForm extends Component {
 
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+      </div>
     );
   }
 }
