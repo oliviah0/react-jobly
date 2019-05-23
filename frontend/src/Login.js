@@ -30,17 +30,14 @@ class Login extends Component {
 
   async handleLogin(data) {
     let token;
-
     try {
       token = await JoblyApi.login(data);
+      localStorage.setItem('token', token);
       this.props.history.push("/");
     }
     catch (e) {
-      console.log(e);
-    }
-
-    if (token) {
-      localStorage.setItem('token', token);
+      //TODO - alert component - too lazy
+      alert(e);
     }
   }
 
@@ -48,14 +45,12 @@ class Login extends Component {
     let token;
     try {
       token = await JoblyApi.register(data);
+      localStorage.setItem('token', token);
       this.props.history.push("/");
     }
     catch (e) {
-      console.log(e);
-    }
-
-    if (token) {
-      localStorage.setItem('token', token);
+      //TODO - alert component - too lazy
+      alert(e);
     }
   }
 
@@ -71,14 +66,12 @@ class Login extends Component {
             <div className="d-flex justify-content-end">
               <div className="btn-group">
                 <button
-                  // className={`btn btn-primary ${loginActive ? "active" : ""} `}
                   className={`btn btn-primary`}
                   onClick={this.toggleLoginView}
                 >
                   Login
                 </button>
                 <button
-                  // className={`btn btn-primary ${loginActive ? "" : "active"} `}
                   className={`btn btn-primary`}
                   onClick={this.toggleSignupView}
                 >

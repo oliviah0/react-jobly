@@ -39,6 +39,7 @@ class App extends Component {
 
   handleLogout() {
     localStorage.removeItem('token');
+    this.setState({currentUser: null});
     this.props.history.push("/");
   }
 
