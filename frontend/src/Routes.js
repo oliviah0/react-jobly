@@ -32,7 +32,7 @@ class Routes extends Component {
           <Route exact path="/companies/:handle" render={props => <Company {...props} />} />
           <Route exact path="/companies" render={props => <Companies {...props}/>} />
           <Route exact path="/jobs" render={props => <Jobs {...props}/>} />
-          <Route exact path="/profile" render={props => <Profile {...props} />} />
+          <Route exact path="/profile" render={props => <Profile {...props} currentUser={this.props.currentUser}/>} />
           <Route exact path="/" render={() => <Home currentUser={this.props.currentUser} />} />
           <Redirect to="/" />
         </Switch>

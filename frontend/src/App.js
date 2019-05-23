@@ -45,7 +45,7 @@ class App extends Component {
   }
 
 
-  render() {
+  render() { 
     if (!this.state.infoLoaded) {
       return (
         <div>LOADING</div>
