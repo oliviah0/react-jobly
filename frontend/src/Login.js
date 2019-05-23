@@ -1,19 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import uuid from "uuid/v4";
 import JoblyApi from "./JoblyApi";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
 class Login extends Component {
-  static defaultProps = {}
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeView: "login"
+    };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
-    
+    this.toggleLoginView = this.toggleLoginView.bind(this);
+    this.toggleSignupView = this.toggleSignupView.bind(this);
+
+  }
+
+
+  toggleView(view) {
+    this.setState({ activeView: view });
+  }
+
+  toggleLoginView() {
+    this.toggleView("login");
+  }
+
+  toggleSignupView() {
+    this.toggleView("signup");
   }
 
   async handleLogin(data) {
@@ -52,11 +66,37 @@ class Login extends Component {
   }
 
   render() {
+
+    let form = this.state.activeView === "login" ? <LoginForm handleLogin={this.handleLogin} /> : <SignUpForm handleSignUp={this.handleSignUp} />
     return (
       <div>
-        <LoginForm handleLogin={this.handleLogin} />
-        <SignUpForm handleSignUp={this.handleSignUp} />
+        <div className="Login">
+          <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div className="d-flex justify-content-end">
+              <div className="btn-group">
+                <button
+                  // className={`btn btn-primary ${loginActive ? "active" : ""} `}
+                  className={`btn btn-primary`}
+                  onClick={this.toggleLoginView}
+                >
+                  Login
+              </button>
+                <button
+                  // className={`btn btn-primary ${loginActive ? "" : "active"} `}
+                  className={`btn btn-primary`}
+                  onClick={this.toggleSignupView}
+                >
+                  Sign up
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          {form}
+        </div>
       </div>
+
     );
   }
 }
