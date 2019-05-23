@@ -11,6 +11,7 @@ class Jobs extends Component {
       jobs: []
     };
     this.getFilteredJobs = this.getFilteredJobs.bind(this);
+    this.apply = this.apply.bind(this)
   }
 
   //when initially accessing page, grabs all jobs from server and sets state
@@ -25,13 +26,27 @@ class Jobs extends Component {
     this.setState({ jobs });
   }
 
+  async apply(appliedJobId) {
+    let username = this.props.currentUser.username
+    let message = await JoblyApi.applyForJob(appliedJobId, username)
+  
+    this.setState(st => ({
+      jobs: st.jobs.map(job => 
+         job.id === appliedJobId 
+         ? {...job, state: message}
+         : job
+        )
+    }))
+  }
+
+
   render() {
     let { jobs } = this.state;
     return (
       <div>
         <div className="jobsWrap">
           <SearchForm handleSearch={this.getFilteredJobs} />
-          <JobList jobs={jobs} />
+          <JobList jobs={jobs} apply={this.apply}/>
         </div>
       </div>
     );
