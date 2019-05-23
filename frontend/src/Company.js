@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import uuid from "uuid/v4";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList";
 
@@ -12,23 +10,19 @@ class Company extends Component {
     };
   }
 
-  async componentDidMount(){
-     let result = await JoblyApi.getCompany(this.props.match.params.handle)
-     this.setState({ company: result })
+  //grab company from server and set to state
+  async componentDidMount() {
+    let company = await JoblyApi.getCompany(this.props.match.params.handle);
+    this.setState({ company });
   }
 
-
   render() {
-    let { company } = this.state
-    console.log(this.state.company)
-    // let jobs = company.jobs
-
-
+    let { company } = this.state;
     return (
       <div>
-       <h1>{company.name}</h1>
-       <p>{company.description}</p>
-       <JobList jobs={company.jobs}/>
+        <h1>{company.name}</h1>
+        <p>{company.description}</p>
+        <JobList jobs={company.jobs} />
       </div>
     );
   }

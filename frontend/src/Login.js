@@ -1,37 +1,40 @@
 import React, { Component } from "react";
-// import "./Login.css";
+import { Link } from "react-router-dom";
+import uuid from "uuid/v4";
+import JoblyApi from "./JoblyApi";
+import LoginForm from "./LoginForm";
 
 class Login extends Component {
+  static defaultProps = {}
+
   constructor(props) {
     super(props);
-    // this.state = {
-    //   ###: "",
-    // };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {};
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  async login(data) {
+    let token;
 
-  handleSubmit(e) {
-    e.preventDefault();
-    // this.props.add###({ this.state });
-    // this.props.history.push("/somewhere");
+    try {
+      token = await JoblyApi.login(data);
+      console.log(token);
+    }
+    catch (e) {
+      console.log(e);
+    }
+
+    if (token) {
+      localStorage.setItem('token', token);
+    }
+
+
   }
 
   render() {
     return (
       <div>
-        LOGIN FORM
-        {/* <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="###">###label###</label>
-            <input name="###" id="###" onChange={this.handleChange} value={this.state.###} />
-          </div>
-          <button type="Submit" value="Add this color" readOnly />
-        </form> */}
+        <LoginForm handleLogin={this.login} />
+
       </div>
     );
   }
