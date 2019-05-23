@@ -14,20 +14,18 @@ class Login extends Component {
     this.handleSignUp = this.handleSignUp.bind(this);
     this.toggleLoginView = this.toggleLoginView.bind(this);
     this.toggleSignupView = this.toggleSignupView.bind(this);
-
   }
-
 
   toggleView(view) {
     this.setState({ activeView: view });
   }
 
-  toggleLoginView() {
-    this.toggleView("login");
-  }
-
   toggleSignupView() {
     this.toggleView("signup");
+  }
+
+  toggleLoginView() {
+    this.toggleView("login");
   }
 
   async handleLogin(data) {
@@ -46,11 +44,8 @@ class Login extends Component {
     }
   }
 
-
   async handleSignUp(data) {
-
     let token;
-
     try {
       token = await JoblyApi.register(data);
       this.props.history.push("/");
@@ -62,12 +57,13 @@ class Login extends Component {
     if (token) {
       localStorage.setItem('token', token);
     }
-
   }
 
   render() {
+    let form = this.state.activeView === "login" 
+      ? <LoginForm handleLogin={this.handleLogin} /> 
+      : <SignUpForm handleSignUp={this.handleSignUp} />;
 
-    let form = this.state.activeView === "login" ? <LoginForm handleLogin={this.handleLogin} /> : <SignUpForm handleSignUp={this.handleSignUp} />
     return (
       <div>
         <div className="Login">
@@ -80,14 +76,14 @@ class Login extends Component {
                   onClick={this.toggleLoginView}
                 >
                   Login
-              </button>
+                </button>
                 <button
                   // className={`btn btn-primary ${loginActive ? "" : "active"} `}
                   className={`btn btn-primary`}
                   onClick={this.toggleSignupView}
                 >
                   Sign up
-              </button>
+                </button>
               </div>
             </div>
           </div>
@@ -96,7 +92,6 @@ class Login extends Component {
           {form}
         </div>
       </div>
-
     );
   }
 }

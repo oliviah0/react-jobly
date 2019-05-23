@@ -15,9 +15,7 @@ class App extends Component {
       currentUser: null,
       infoLoaded: false
     };
-
     this.getCurrentUser = this.getCurrentUser.bind(this);
-
   }
 
   async componentDidMount() {
@@ -44,8 +42,7 @@ class App extends Component {
     this.props.history.push("/");
   }
 
-
-  render() { 
+  render() {
     if (!this.state.infoLoaded) {
       return (
         <div>LOADING</div>
@@ -53,10 +50,6 @@ class App extends Component {
     }
     return (
       <div className="App">
-        {/* <CurrentUserContext.Provider value={this.state.currentUser}>
-          <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
-          <Routes currentUser={this.state.currentUser} />
-        </CurrentUserContext.Provider> */}
         <BrowserRouter>
           <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
           <Routes currentUser={this.state.currentUser} />

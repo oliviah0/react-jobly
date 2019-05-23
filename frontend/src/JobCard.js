@@ -3,22 +3,19 @@ import "./JobCard.css";
 
 class JobCard extends Component {
   constructor(props) {
-  super(props)
-
-  this.applyJob = this.applyJob.bind(this)
+    super(props);
+    this.applyJob = this.applyJob.bind(this);
   }
 
-  applyJob(){
-   console.log(this.props.job.state)
-   this.props.apply(this.props.job.id) 
+  applyJob() {
+    this.props.apply(this.props.job.id);
   }
-
 
   render() {
     let { job } = this.props;
-    let { state } = job
-    let buttonText = state ? "Applied" : "Apply"
- 
+    let { state } = job;
+    let buttonText = state ? "Applied" : "Apply";
+
     return (
       <div>
         <div className="jobCard my-2">

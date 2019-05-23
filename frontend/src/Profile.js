@@ -5,7 +5,7 @@ import JoblyApi from "./JoblyApi";
 class Profile extends Component {
   constructor(props) {
     super(props);
-    let curr = this.props.currentUser
+    let curr = this.props.currentUser;
     this.state = {
       username: curr.username,
       first_name: curr.first_name || "",
@@ -17,7 +17,6 @@ class Profile extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -32,15 +31,16 @@ class Profile extends Component {
         email: this.state.email || undefined,
         photo_url: this.state.photo_url || undefined,
         password: this.state.password
-      }
+      };
 
-      await JoblyApi.updateUser(this.state.username, data)
+      await JoblyApi.updateUser(this.state.username, data);
       this.setState({ password: "" }, () => alert("We did it!")
-      )
+      );
 
     }
     catch (err) {
-      console.log(err)
+      //TODO - figure out what to do here later
+      console.log(err);
     }
   }
 
@@ -97,20 +97,9 @@ class Profile extends Component {
               onChange={this.handleChange}
               placeholder="Password" />
           </div>
-
-
-
-
-
           <button type="submit" class="btn btn-primary">Submit</button>
-
-
-
         </form>
-
       </div>
-
-
     );
   }
 }
