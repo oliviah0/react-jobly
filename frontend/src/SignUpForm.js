@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 // import "./Login.css";
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      first_name: "",
+      last_name: "",
+      email: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +21,7 @@ class LoginForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleLogin(this.state);
+    this.props.handleSignUp(this.state);
 
   }
 
@@ -49,10 +52,50 @@ class LoginForm extends Component {
             value={this.state.password}
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="first_name">First Name</label>
+          <input 
+            type="first_name" 
+            name="first_name"
+            className="form-control" 
+            id="first_name" 
+            placeholder="first_name"
+            onChange={this.handleChange}
+            value={this.state.first_name}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="last_name">Last Name</label>
+          <input 
+            type="last_name" 
+            name="last_name"
+            className="form-control" 
+            id="last_name" 
+            placeholder="last_name"
+            onChange={this.handleChange}
+            value={this.state.last_name}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input 
+            type="email" 
+            name="email"
+            className="form-control" 
+            id="email" 
+            placeholder="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
+        </div>
+
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
   }
 }
         
-export default LoginForm;
+export default SignUpForm;

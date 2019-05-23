@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 
 import Home from "./Home";
 import Login from "./Login";
+import LoginForm from "./LoginForm";
 import Profile from "./Profile";
 
 import Companies from "./Companies";
