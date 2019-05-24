@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
+import './Login.css';
 
 class Login extends Component {
 
@@ -62,30 +63,16 @@ class Login extends Component {
       : <SignUpForm handleSignUp={this.handleSignUp} />;
 
     return (
-      <div>
-        <div className="Login">
-          <div className="container buttons-style col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <div className="d-flex justify-content-end">
-              <div className="btn-group">
-                <button
-                  className={`btn btn-primary`}
-                  onClick={this.toggleLoginView}
-                >
-                  Login
-                </button>
-                <button
-                  className={`btn btn-primary`}
-                  onClick={this.toggleSignupView}
-                >
-                  Sign up
-                </button>
-              </div>
-            </div>
-          </div>
+      <div className="form-container">
+        <div className="btn-group">
+          <button className={`btn btn-primary`} onClick={this.toggleLoginView}>
+            Login
+          </button>
+          <button className={`btn btn-primary`} onClick={this.toggleSignupView}>
+            Sign up
+          </button>
         </div>
-        <div>
-          {form}
-        </div>
+        {form}
       </div>
     );
   }
