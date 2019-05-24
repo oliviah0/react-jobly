@@ -8,37 +8,43 @@ import Profile from "./Profile";
 import Companies from "./Companies";
 import Company from "./Company";
 import Jobs from "./Jobs";
+import CurrentUserContext from "./CurrentUserContext";
 
-class Routes extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+class PrivateRoute extends Component {
+  static contextType = CurrentUserContext;
   render() {
-    let routes = (
-      <Switch>
-        <Route exact path="/login" render={props => <Login {...props} getCurrentUser={this.props.getCurrentUser} />} />
-        <Route exact path="/" render={() => <Home currentUser={this.props.currentUser} />} />
-        <Redirect to="/login" />
-      </Switch>
-    );
-
-    if (this.props.currentUser) {
-      routes = (
-        <Switch>
-          <Route exact path="/companies/:handle" render={props => <Company {...props} currentUser={this.props.currentUser}/>} />
-          <Route exact path="/companies" render={props => <Companies {...props} />} />
-          <Route exact path="/jobs" render={props => <Jobs {...props} currentUser={this.props.currentUser} />} />
-          <Route exact path="/profile" render={props => <Profile {...props} currentUser={this.props.currentUser} />} />
-          <Route exact path="/" render={() => <Home currentUser={this.props.currentUser} />} />
-          <Redirect to="/" />
-        </Switch>
-      );
+    // this.context will be the entire currentUser object or null
+    if (!this.context || !this.context.username) {
+      return <Redirect to="/login" />;
     }
 
     return (
+      <Route
+        exact={this.props.exact}
+        path={this.props.path}
+        render={this.props.render}
+      />
+    );
+  }
+}
+
+
+class Routes extends Component {
+  static contextType = CurrentUserContext;
+
+  render() {
+    return (
       <div>
-        {routes}
+        <Switch>
+          <Route exact path="/login" render={props => <Login {...props} getCurrentUser={this.props.getCurrentUser} />} />
+          <Route exact path="/" render={() => <Home />} />
+          <PrivateRoute path="/companies/:handle" render={props => <Company {...props} getCurrentUser={this.props.getCurrentUser} />} />
+          <PrivateRoute path="/companies" render={props => <Companies {...props} />} />
+          <PrivateRoute path="/jobs" render={props => <Jobs {...props} />} />
+          <PrivateRoute path="/profile" render={props => <Profile {...props} />} />
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }

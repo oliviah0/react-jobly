@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
 import "./Profile.css";
+import CurrentUserContext from "./CurrentUserContext";
 
 class Profile extends Component {
-  constructor(props) {
+  static contextType = CurrentUserContext;
+
+  constructor(props, context) {
     super(props);
-    let curr = this.props.currentUser;
+    let curr = context;
     this.state = {
       username: curr.username,
       first_name: curr.first_name || "",

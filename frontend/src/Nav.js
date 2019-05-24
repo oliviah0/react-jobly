@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import CurrentUserContext from "./CurrentUserContext";
 
 class Nav extends Component {
+  static contextType = CurrentUserContext;
+  
   render() {
-
     let navLinks = (
       <div className="navbar-nav">
         <Link to="/companies" className="nav-item nav-link">Companies</Link>
@@ -13,7 +15,7 @@ class Nav extends Component {
       </div>
     );
 
-    if (!this.props.currentUser) {
+    if (!this.context) {
       navLinks = (
         <div className="navbar-nav">
           <Link to="login" className="nav-item nav-link">Login</Link>

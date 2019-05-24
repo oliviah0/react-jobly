@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList";
+import CurrentUserContext from "./CurrentUserContext";
 
 class Company extends Component {
+  static contextType = CurrentUserContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +22,8 @@ class Company extends Component {
     let company = await JoblyApi.getCompany(this.props.match.params.handle);
 
     // get the current logged in user's jobs applied to for this company
-    let userAppliedJobs = this.props.currentUser.jobs;
-    let jobsAppliedIds = new Set(userAppliedJobs.map(job => job.id));
+    let userAppliedJobs = this.context.jobs;
+    let jobsAppliedIds = new Set(userAppliedJobs.map(job => job.id)); 
 
     // create a new company jobs list with added indicator if current user applied to job
     let jobs = company.jobs.map(job => (
@@ -39,7 +42,7 @@ class Company extends Component {
    * @param {number} appliedJobId 
    */
   async apply(appliedJobId) {
-    let { username } = this.props.currentUser;
+    let { username } = this.context;
     
     // posts to server the user's application and returns message: "applied"
     let message = await JoblyApi.applyForJob(appliedJobId, username);
@@ -52,6 +55,9 @@ class Company extends Component {
         : job
     );
 
+    //update the currentUser on 'App', so when you leave page and return, the jobs applied can appear applied.
+    await this.props.getCurrentUser();
+    
     // update the company-job array in state
     this.setState(st => ({
       company: { ...st.company, jobs: newJobs }

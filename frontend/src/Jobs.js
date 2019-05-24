@@ -3,8 +3,11 @@ import "./Jobs.css";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList";
 import SearchForm from "./SearchForm";
+import CurrentUserContext from "./CurrentUserContext";
 
 class Jobs extends Component {
+  static contextType = CurrentUserContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +34,7 @@ class Jobs extends Component {
    * @param {number} appliedJobId 
    */
   async apply(appliedJobId) {
-    let { username } = this.props.currentUser;
+    let { username } = this.context;
     
     // posts to server the user's application and returns message: "applied"
     let message = await JoblyApi.applyForJob(appliedJobId, username);

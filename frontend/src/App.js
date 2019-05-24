@@ -39,7 +39,7 @@ class App extends Component {
 
   handleLogout() {
     localStorage.removeItem('token');
-    this.setState({currentUser: null});
+    this.setState({ currentUser: null });
     this.props.history.push("/");
   }
 
@@ -50,12 +50,14 @@ class App extends Component {
       );
     }
     return (
-      <div className="App">
-        <BrowserRouter>
-          <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
-          <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} />
-        </BrowserRouter>
-      </div>
+      <CurrentUserContext.Provider value={this.state.currentUser}>
+        <div className="App">
+          <BrowserRouter>
+            <Nav handleLogout={this.handleLogout} />
+            <Routes getCurrentUser={this.getCurrentUser} />
+          </BrowserRouter>
+        </div>
+      </CurrentUserContext.Provider>
     );
   }
 }
