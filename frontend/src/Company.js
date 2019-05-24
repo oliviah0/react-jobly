@@ -11,37 +11,56 @@ class Company extends Component {
     this.apply = this.apply.bind(this);
   }
 
-  //grab company from server and set to state
+  /**
+   * Gets company from server and set to state
+   */
   async componentDidMount() {
+    //grab company record from server
     let company = await JoblyApi.getCompany(this.props.match.params.handle);
 
-    //TODO - grab all the current users jobs applied for this company
-    //TODO - then udpate the 'company' and set state
+    // get the current logged in user's jobs applied to for this company
+    let userAppliedJobs = this.props.currentUser.jobs;
+    let jobsAppliedIds = new Set(userAppliedJobs.map(job => job.id));
+
+    // create a new company jobs list with added indicator if current user applied to job
+    let jobs = company.jobs.map(job => (
+      jobsAppliedIds.has(job.id)
+        ? { ...job, state: "applied" }
+        : job
+    ));
+    
+    // update the jobs array in the company and set to state
+    company.jobs = jobs;
     this.setState({ company });
   }
 
-  //send post to server to apply username to job id
+  /**
+   * Post to server when user applies to a job. Associates username to job id.
+   * @param {number} appliedJobId 
+   */
   async apply(appliedJobId) {
-    let username = this.props.currentUser.username;
+    let { username } = this.props.currentUser;
+    
+    // posts to server the user's application and returns message: "applied"
     let message = await JoblyApi.applyForJob(appliedJobId, username);
-
+    
+    // create a new company-jobs list with added indicator that current user has applied to job
     let jobs = [...this.state.company.jobs];
-
     let newJobs = jobs.map(job =>
       job.id === appliedJobId
         ? { ...job, state: message }
         : job
     );
 
-    // update the single job in state to have an applied status indicator
+    // update the company-job array in state
     this.setState(st => ({
-      company: {...st.company, jobs: newJobs}
+      company: { ...st.company, jobs: newJobs }
     }));
   }
 
   render() {
     let { company } = this.state;
-  
+
     return (
       <div>
         <h1>{company.name}</h1>

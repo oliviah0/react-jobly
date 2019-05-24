@@ -33,6 +33,7 @@ class Login extends Component {
     try {
       token = await JoblyApi.login(data);
       localStorage.setItem('token', token);
+      await this.props.getCurrentUser();
       this.props.history.push("/");
     }
     catch (e) {
@@ -46,6 +47,7 @@ class Login extends Component {
     try {
       token = await JoblyApi.register(data);
       localStorage.setItem('token', token);
+      await this.props.getCurrentUser();
       this.props.history.push("/");
     }
     catch (e) {

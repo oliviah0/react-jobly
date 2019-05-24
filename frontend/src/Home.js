@@ -8,7 +8,11 @@ class Home extends Component {
     let home = (
       <div>
         <p style={{fontSize:"43px"}}>WELCOME HOME</p>
-        <Link to="/login"><button className="btn btn-primary">Login</button></Link>
+        <Link to="/login">
+          <button className="btn btn-primary">
+            Login
+          </button>
+        </Link>
       </div>
     );
 

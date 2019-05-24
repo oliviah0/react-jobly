@@ -26,9 +26,14 @@ class Jobs extends Component {
     this.setState({ jobs });
   }
 
-  //send post to server to apply username to job id
+  /**
+   * Post to server when user applies to a job. Associates username to job id.
+   * @param {number} appliedJobId 
+   */
   async apply(appliedJobId) {
-    let username = this.props.currentUser.username;
+    let { username } = this.props.currentUser;
+    
+    // posts to server the user's application and returns message: "applied"
     let message = await JoblyApi.applyForJob(appliedJobId, username);
 
     //update the single job in state to have an applied status indicator

@@ -53,7 +53,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Nav currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
-          <Routes currentUser={this.state.currentUser} />
+          <Routes currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} />
         </BrowserRouter>
       </div>
     );
