@@ -34,7 +34,7 @@ class SearchForm extends Component {
             value={this.state.searchItem} 
           />
           <button 
-            className="btn btn-outline-success btn-lg" 
+            className="btn btn-primary btn-lg" 
             type="submit">Search
           </button>
         </form>

@@ -50,13 +50,19 @@ class App extends Component {
       );
     }
     return (
+
       <CurrentUserContext.Provider value={this.state.currentUser}>
+       <main>
         <div className="App">
           <BrowserRouter>
             <Nav handleLogout={this.handleLogout} />
-            <Routes getCurrentUser={this.getCurrentUser} />
+            <div className="app-wrap">
+            <Routes getCurrentUser={this.getCurrentUser}/>
+            </div>
           </BrowserRouter>
         </div>
+        </main>
+        
       </CurrentUserContext.Provider>
     );
   }

@@ -1,3 +1,25 @@
 .home-style {
-  font-size: 43px;
+  margin: 0px;
+  font-size: 60px;
+  font-weight: 900;
+  font-family: 'Roboto Condensed', sans-serif;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-style {
+  padding-left: 26px;
+  padding-right: 26px;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.home {
+  font-size: 60px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

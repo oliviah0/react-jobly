@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList";
+import "./CompanyCard.css"
 import CurrentUserContext from "./CurrentUserContext";
 
 class Company extends Component {
@@ -69,8 +70,10 @@ class Company extends Component {
 
     return (
       <div>
+        <div className="style-company-name">
         <h1>{company.name}</h1>
         <p>{company.description}</p>
+        </div>
         <JobList jobs={company.jobs} apply={this.apply} />
       </div>
     );

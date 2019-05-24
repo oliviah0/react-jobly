@@ -5,13 +5,13 @@ import CurrentUserContext from "./CurrentUserContext";
 
 class Home extends Component {
   static contextType = CurrentUserContext;
-
+  
   render() {
     let home = (
-      <div>
-        <p style={{fontSize:"43px"}}>WELCOME HOME</p>
+      <div className="home">
+        <p>WELCOME HOME</p>
         <Link to="/login">
-          <button className="btn btn-primary">
+          <button className="btn btn-primary btn-lg btn-style">
             Login
           </button>
         </Link>

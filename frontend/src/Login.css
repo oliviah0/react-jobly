@@ -9,3 +9,7 @@
 .buttons-style {
   width: 450px;
 }
+
+.card-body {
+  background-color: #ffffff;
+};

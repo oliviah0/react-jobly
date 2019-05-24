@@ -15,10 +15,12 @@
 }
 
 .card-body {
+  background-color: #f8f9fa;
   position: relative;
   color:#525252;
   text-align: left;
   font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .card-body > p {
   width: 700px;
@@ -28,4 +30,20 @@
   max-width: 59px;
   right: 25px;
   top: 30px;
+}
+
+.style-company-name {
+  background-color: #f8f9fa;
+  border: 1px solid #cecece;
+  height: 160px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.style-company-name > p, .style-company-name > h1 {
+  color: #6d6a6d
+}
+
+.style-company-name > h1 {
+  margin-top: 35px;
 }
