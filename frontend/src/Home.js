@@ -19,7 +19,7 @@ class Home extends Component {
     );
 
     if (this.context) {
-      home = `WELCOME BACK ${this.context.first_name}`;
+      home = `welcome back ${this.context.first_name}`;
     }
 
     return (
