@@ -54,6 +54,7 @@ class Jobs extends Component {
     return (
       <div>
         <div className="jobsWrap">
+          <h1 style={{ color: "#6d6a6d", marginTop: "35px"}}>Jobs</h1>
           <SearchForm handleSearch={this.getFilteredJobs} />
           <JobList jobs={jobs} apply={this.apply} />
         </div>

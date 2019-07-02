@@ -10,7 +10,7 @@ class CompanyCard extends Component {
     let image = company.logo_url ? company.logo_url : "https://cdn0.iconfinder.com/data/icons/good-view/500/View-08-512.png"   
     return (
       <div>
-        <div className="companyCard my-2">
+        <div className="companyCard my-3">
           <Link to={companyPage}>
             <div className="card-body">
               <h5 className="card-title">{company.name}</h5>

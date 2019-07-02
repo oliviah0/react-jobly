@@ -50,13 +50,13 @@ class Profile extends Component {
   render() {
     return (
       <div className="card-body profile-style">
-        <h2>PROFILE</h2>
+        <h2>Profile</h2>
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="username">Username</label>
             <p className="form-control-plaintext">{this.state.username}</p>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="first_name">First Name</label>
             <input
               type="text"
@@ -67,7 +67,7 @@ class Profile extends Component {
               value={this.state.first_name}
               onChange={this.handleChange} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="last_name">Last Name</label>
             <input
               type="text"
@@ -78,7 +78,7 @@ class Profile extends Component {
               value={this.state.last_name}
               onChange={this.handleChange} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="email">Email address</label>
             <input
               type="email"
@@ -89,7 +89,7 @@ class Profile extends Component {
               onChange={this.handleChange}
               placeholder="Enter email" />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -100,7 +100,7 @@ class Profile extends Component {
               onChange={this.handleChange}
               placeholder="Password" />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     );

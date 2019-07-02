@@ -18,12 +18,12 @@ class JobCard extends Component {
 
     return (
       <div>
-        <div className="jobCard my-2">
+        <div className="jobCard my-3">
           <div className="card-body">
             <h3 className="card-title">{job.title}</h3>
             <p className="card-text">Salary: ${job.salary}</p>
             <p className="card-text">Equity: {job.equity}</p>
-            <button onClick={this.applyJob} className="btn btn-danger" disabled={state}>{buttonText}</button>
+            <button onClick={this.applyJob} className="btn btn-success" disabled={state}>{buttonText}</button>
           </div>
         </div>
       </div>

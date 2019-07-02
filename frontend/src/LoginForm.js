@@ -1,5 +1,5 @@
 import React, { Component } from "react";
- import "./Login.css";
+import "./Login.css";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -24,33 +24,33 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="card-body login-style">
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input 
-            type="text"
-            name="username" 
-            className="form-control" 
-            id="username" 
-            placeholder="Enter username"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input 
-            type="password" 
-            name="password"
-            className="form-control" 
-            id="password" 
-            placeholder="Password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-group mb-4">
+            <label htmlFor="username">Username</label>
+            <input 
+              type="text"
+              name="username" 
+              className="form-control" 
+              id="username" 
+              placeholder="Enter username"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
+          </div>
+          <div className="form-group mb-4">
+            <label htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              name="password"
+              className="form-control" 
+              id="password" 
+              placeholder="Password"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
       </div>
     );
   }

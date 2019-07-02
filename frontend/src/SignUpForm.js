@@ -28,7 +28,7 @@ class SignUpForm extends Component {
     return (
       <div className="card-body login-style">
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="username">Username</label>
             <input 
               type="text"
@@ -40,7 +40,7 @@ class SignUpForm extends Component {
               value={this.state.username}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="password">Password</label>
             <input 
               type="password" 
@@ -53,7 +53,7 @@ class SignUpForm extends Component {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="first_name">First Name</label>
             <input 
               type="first_name" 
@@ -66,7 +66,7 @@ class SignUpForm extends Component {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="last_name">Last Name</label>
             <input 
               type="last_name" 
@@ -79,7 +79,7 @@ class SignUpForm extends Component {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group mb-4">
             <label htmlFor="email">Email</label>
             <input 
               type="email" 

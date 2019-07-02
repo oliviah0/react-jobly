@@ -30,6 +30,7 @@ class Companies extends Component {
     return (
       <div>
         <div className="companiesWrap">
+          <h1 style={{ color: "#6d6a6d", marginTop: "35px"}}>Companies</h1>
           <SearchForm handleSearch={this.getFilteredCompanies} />
           <CompanyList companies={companies} />
         </div>

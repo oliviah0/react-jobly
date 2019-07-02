@@ -63,6 +63,7 @@ class Login extends Component {
       : <SignUpForm handleSignUp={this.handleSignUp} />;
 
     return (
+
       <div className="form-container">
         <div className="btn-group">
           <button className={`btn btn-primary`} onClick={this.toggleLoginView}>
@@ -74,6 +75,8 @@ class Login extends Component {
         </div>
         {form}
       </div>
+
+  
     );
   }
 }

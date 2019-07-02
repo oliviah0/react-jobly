@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi";
 import JobList from "./JobList";
-import "./CompanyCard.css"
+import "./CompanyCard.css";
 import CurrentUserContext from "./CurrentUserContext";
 
 class Company extends Component {
