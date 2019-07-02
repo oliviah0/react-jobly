@@ -42,7 +42,7 @@ class Profile extends Component {
 
     }
     catch (err) {
-      //TODO - figure out what to do here later
+      //TODO - alert component
       console.log(err);
     }
   }

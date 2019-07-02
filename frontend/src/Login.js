@@ -38,7 +38,7 @@ class Login extends Component {
       this.props.history.push("/");
     }
     catch (e) {
-      //TODO - alert component - too lazy
+      //TODO - alert component
       alert(e);
     }
   }
@@ -52,7 +52,7 @@ class Login extends Component {
       this.props.history.push("/");
     }
     catch (e) {
-      //TODO - alert component - too lazy
+      //TODO - alert component
       alert(e);
     }
   }
