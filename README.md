@@ -1,3 +1,5 @@
+### Jobly
+
 A full-stack job posting and job application website. 
 
 Users can create an account, log-in, search for companies, search for jobs and apply to them. 
