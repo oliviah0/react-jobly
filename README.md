@@ -41,3 +41,19 @@ Path | Component
 /companies/:handle | Company
 /jobs | Jobs
 /profile | Profile
+
+
+### Deployment
+
+Backend:
+```
+cd backend/ 
+npm i
+npm start
+```
+
+Frontend on localhost:3000
+``` cd frontend/
+npm i
+npm start
+```
