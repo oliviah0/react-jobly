@@ -32,6 +32,7 @@ class User {
       // compare data.password to db's hashed password
       const isValid = await bcrypt.compare(data.password, user.password);
       if (isValid) {
+        delete user.password;
         return user;
       }
     }
@@ -42,7 +43,7 @@ class User {
   }
 
   /** Register user with data. Returns new user data. 
-   * Input: data = {username, password, first_name, last_name, email, photo_url, is_admin}
+   *  Input: data = {username, password, first_name, last_name, email, photo_url}
   */
 
   static async register(data) {

@@ -37,12 +37,12 @@ class Profile extends Component {
       };
 
       await JoblyApi.updateUser(this.state.username, data);
-      this.setState({ password: "" }, () => alert("We did it!")
+      this.setState({ password: "" }, () => alert("User details have been updated")
       );
 
     }
     catch (err) {
-      //TODO - alert component
+      alert("Error occured");
       console.log(err);
     }
   }
