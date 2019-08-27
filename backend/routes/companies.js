@@ -42,6 +42,8 @@ router.get("/:handle", authRequired, async function (req, res, next) {
 
 router.post("/", adminRequired, async function (req, res, next) {
   try {
+
+    // ensure request body has valid fields to create company
     const validation = validate(req.body, companyNewSchema);
 
     if (!validation.valid) {
@@ -68,7 +70,7 @@ router.patch("/:handle", adminRequired, async function (req, res, next) {
     if ("handle" in req.body) {
       return next({status: 400, message: "Not allowed"});
     }
-
+    // ensure request body has valid fields
     const validation = validate(req.body, companyUpdateSchema);
     if (!validation.valid) {
       return next({

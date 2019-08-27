@@ -6,7 +6,7 @@ const sqlForPartialUpdate = require("../helpers/partialUpdate");
 
 class Job {
 
-  /** Find all jobs (can filter on terms in data). */
+  /** Find all and return an arrray of jobs (can filter based on data passed in). */
 
   static async findAll(data, username) {
     console.log(data);
@@ -40,13 +40,14 @@ class Job {
     }
 
     // Finalize query and return results
-
     let finalQuery = baseQuery + whereExpressions.join(" AND ");
     const jobsRes = await db.query(finalQuery, queryValues);
     return jobsRes.rows;
   }
 
-  /** Given a job id, return data about job. */
+  /** Given a job id, return data about job. 
+   *  => {title, company_handle}
+  */
 
   static async findOne(id) {
     const jobRes = await db.query(
@@ -75,7 +76,9 @@ class Job {
     return job;
   }
 
-  /** Create a job (from data), update db, return new job data. */
+  /** Create a job (from data), update db, return new job data. 
+   *  => {id, title, salary, equity, company_handle}
+  */
 
   static async create(data) {
     const result = await db.query(
@@ -90,9 +93,8 @@ class Job {
 
   /** Update job data with `data`.
    *
-   * This is a "partial update" --- it's fine if data doesn't contain
+   * This is a "partial update" --- fine if data doesn't contain
    * all the fields; this only changes provided ones.
-   *
    * Return data for changed job.
    *
    */

@@ -42,6 +42,7 @@ router.get("/:id", authRequired, async function(req, res, next) {
 router.post(
     "/", adminRequired, async function(req, res, next) {
       try {
+        // ensure request body has valid fields to create job
         const validation = validate(req.body, jobNewSchema);
 
         if (!validation.valid) {
@@ -68,7 +69,7 @@ router.patch("/:id", adminRequired, async function(req, res, next) {
     if ("id" in req.body) {
       return res.status(400).json({ message: "Not allowed" });
     }
-
+    // ensure request body has valid fields
     const validation = validate(req.body, jobUpdateSchema);
     if (!validation.valid) {
       return next({

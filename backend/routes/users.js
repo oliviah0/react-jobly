@@ -44,6 +44,8 @@ router.get("/:username", authRequired, async function(req, res, next) {
 router.post("/", async function(req, res, next) {
   try {
     delete req.body._token;
+
+    // ensure request body has valid fields to create user
     const validation = validate(req.body, userNewSchema);
 
     if (!validation.valid) {
@@ -69,7 +71,7 @@ router.patch("/:username", ensureCorrectUser, async function(req, res, next) {
     if ("username" in req.body || "is_admin" in req.body) {
       return next({status: 400, message: "Not allowed" });
     }
-
+    // ensure request body has valid fields
     const validation = validate(req.body, userUpdateSchema);
     if (!validation.valid) {
       return next({

@@ -29,7 +29,7 @@ class User {
     const user = result.rows[0];
 
     if (user) {
-      // compare hashed password to a new hash from password
+      // compare data.password to db's hashed password
       const isValid = await bcrypt.compare(data.password, user.password);
       if (isValid) {
         return user;
@@ -41,9 +41,13 @@ class User {
     throw invalidPass;
   }
 
-  /** Register user with data. Returns new user data. */
+  /** Register user with data. Returns new user data. 
+   * Input: data = {username, password, first_name, last_name, email, photo_url, is_admin}
+  */
 
   static async register(data) {
+
+    // check if username already exists in db
     const duplicateCheck = await db.query(
         `SELECT username 
             FROM users 
@@ -58,13 +62,14 @@ class User {
       throw err;
     }
 
+    // if username doesn't exist yet, proceed with creating user
     const hashedPassword = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
 
     const result = await db.query(
         `INSERT INTO users 
             (username, password, first_name, last_name, email, photo_url) 
           VALUES ($1, $2, $3, $4, $5, $6) 
-          RETURNING username, password, first_name, last_name, email, photo_url`,
+          RETURNING username, first_name, last_name, email, photo_url, is_admin`,
         [
           data.username,
           hashedPassword,
@@ -77,7 +82,9 @@ class User {
     return result.rows[0];
   }
 
-  /** Find all users. */
+  /** Find all users. 
+   *  => {username, first_name, last_name, email}
+  */
 
   static async findAll() {
     const result = await db.query(
@@ -88,7 +95,9 @@ class User {
     return result.rows;
   }
 
-  /** Given a username, return data about user. */
+  /** Given a username, return data about user. 
+   * => {username, first_name, last_name, email, photo_url, jobs}
+  */
 
   static async findOne(username) {
     const userRes = await db.query(
@@ -118,9 +127,8 @@ class User {
 
   /** Update user data with `data`.
    *
-   * This is a "partial update" --- it's fine if data doesn't contain
+   * This is a "partial update" --- fine if data doesn't contain
    * all the fields; this only changes provided ones.
-   *
    * Return data for changed user.
    *
    */

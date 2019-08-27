@@ -6,7 +6,9 @@ const sqlForPartialUpdate = require("../helpers/partialUpdate");
 
 class Company {
 
-  /** Find all companies (can filter on terms in data). */
+  /** Find all and return array of companies (can filter based on data passed in). 
+   * => [ {handle, name, num_employees, description,logo_url}, ... , ... ]
+  */
 
   static async findAll(data) {
     let baseQuery = `SELECT handle, name, description, logo_url FROM companies`;
@@ -40,14 +42,14 @@ class Company {
     }
 
     // Finalize query and return results
-
     let finalQuery = baseQuery + whereExpressions.join(" AND ") + " ORDER BY name";
     const companiesRes = await db.query(finalQuery, queryValues);
     return companiesRes.rows;
   }
 
-  /** Given a company handle, return data about company. */
-
+  /** Given a company handle, return data about company. 
+   *  => {handle, name, num_employees, description, logo_url}
+  */
   static async findOne(handle) {
     const companyRes = await db.query(
       `SELECT handle, name, num_employees, description, logo_url
@@ -74,7 +76,9 @@ class Company {
     return company;
   }
 
-  /** Create a company (from data), update db, return new company data. */
+  /** Create a company (from data), update db, return new company data. 
+   * => {handle, name, num_employees, description, logo_url}
+  */
 
   static async create(data) {
     const duplicateCheck = await db.query(
@@ -108,9 +112,8 @@ class Company {
 
   /** Update company data with `data`.
    *
-   * This is a "partial update" --- it's fine if data doesn't contain
+   * This is a "partial update" --- fine if data doesn't contain
    * all the fields; this only changes provided ones.
-   *
    * Return data for changed company.
    *
    */
