@@ -9,8 +9,6 @@ class Home extends Component {
 
   render() {
     let home = (
-
-
       <div className="home col-sm-6">
         <h1>Need a job? We got you.</h1>
         <p>Search thousands of job postings from top rated employers.</p>
@@ -21,7 +19,6 @@ class Home extends Component {
         </Link>
 
       </div>
-
     );
 
     if (this.context) {
@@ -30,10 +27,17 @@ class Home extends Component {
           <h4>Welcome Back {this.context.first_name}!</h4>
           <p>Let's find you a job</p>
           <img src={image}/><br/>
-          <button className="btn btn-lg btn-success mx-2 btn-home">Job Postings</button>
-          <button className="btn btn-lg btn-success mx-2 btn-home">Companies</button>
+          <Link to="/jobs">
+            <button className="btn btn-lg btn-success mx-2 btn-home">
+              Job Postings
+            </button>
+          </Link>
+          <Link to="/companies">
+            <button className="btn btn-lg btn-success mx-2 btn-home">
+              Companies
+            </button>
+          </Link>
         </div>
-
       );
     }
 
