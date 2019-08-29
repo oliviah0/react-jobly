@@ -4,23 +4,6 @@ A full-stack job posting and job application website.
 
 Users can create an account, log-in, search for companies, search for jobs and apply to them. 
 
-
-### Layers and Key Elements
-
-Database: 
-* PostgreSQL
-
-Backend: 
-* Node.js
-* Express.js
-* JWT
-* Bcrypt - hash and compare passwords
-* Jsonschema - validate request body data for post and patches
-* Middleware - authentication and authorization for private routes
-* 'pg' module - connect to postgres database
-* Parameterized queries - prevent SQL injection
-* Supertest and Jest - for integration tests
-
 Frontend:
 * React
 * React-router
